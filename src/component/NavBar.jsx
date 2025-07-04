@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoHome, IoSearch } from "react-icons/io5";
 import { IoMdContact, IoMdInformationCircle } from "react-icons/io";
 import { CiShoppingCart } from "react-icons/ci";
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
 
 function NavBar({ searchText, setSearchText }) {
   const navigate = useNavigate();
@@ -33,6 +34,12 @@ function NavBar({ searchText, setSearchText }) {
         <Link to="/about" className="nav-link"><IoMdInformationCircle /> About</Link>
         <Link to="/contact" className="nav-link"><IoMdContact /> Contact</Link>
         <Link to="/cart" className="nav-link"><CiShoppingCart /> Cart</Link>
+        <SignedOut>
+                <SignInButton />
+            </SignedOut>
+            <SignedIn>
+                <UserButton />
+            </SignedIn>
       </div>
     </div>
   );
